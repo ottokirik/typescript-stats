@@ -1,11 +1,11 @@
-import { CsvFileReader } from './CsvFileReader';
+import { CsvFileReader, MatchData } from './CsvFileReader';
 import { MatchResult } from './MatchResult';
 
 const reader = new CsvFileReader('football.csv');
 reader.read();
 
 const manUnitedWins = reader.data.reduce(
-  (acc: number, itemRow: string[]): number =>
+  (acc: number, itemRow: MatchData): number =>
     (itemRow[1] === 'Man United' && itemRow[5] === MatchResult.HomeWin) ||
     (itemRow[2] === 'Man United' && itemRow[5] === MatchResult.AwayWin)
       ? acc + 1

@@ -3,7 +3,15 @@ import fs from 'fs';
 import { dateFromStringToDate } from './utils';
 import { MatchResult } from './MatchResult';
 
-type MatchData = [Date, string, string, number, number, MatchResult, string];
+export type MatchData = [
+  Date,
+  string,
+  string,
+  number,
+  number,
+  MatchResult,
+  string
+];
 
 export class CsvFileReader {
   data: MatchData[] = [];
