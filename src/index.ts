@@ -1,10 +1,14 @@
 import { CsvFileReader } from './CsvFileReader';
 import { MatchResult } from './MatchResult';
+import { MatchReader, MatchData } from './MatchReader';
 
-const reader = new CsvFileReader('football.csv');
-reader.read();
+const matchReader = new MatchReader(new CsvFileReader('football.csv'));
 
-const manUnitedWins = reader.data.reduce(
+matchReader.load();
+
+const matches = matchReader.matches;
+
+const manUnitedWins = matches.reduce(
   (acc: number, itemRow: MatchData): number =>
     (itemRow[1] === 'Man United' && itemRow[5] === MatchResult.HomeWin) ||
     (itemRow[2] === 'Man United' && itemRow[5] === MatchResult.AwayWin)
